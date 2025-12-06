@@ -1,0 +1,74 @@
+##############################
+# Build Output
+##############################
+/target/
+/build/
+
+##############################
+# Java / Spring Boot
+##############################
+*.class
+*.jar
+*.war
+*.ear
+
+##############################
+# Maven
+##############################
+.mvn/
+!**/mvn/wrapper/maven-wrapper.jar
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+##############################
+# Gradle (if project uses it)
+##############################
+.gradle/
+gradle-app.setting
+!gradle/wrapper/gradle-wrapper.jar
+!gradlew
+!gradlew.bat
+
+##############################
+# Logs
+##############################
+logs/
+*.log
+
+##############################
+# Application Secrets
+##############################
+application.properties
+application.yml
+application-dev.properties
+application-prod.properties
+application-test.properties
+*.env
+*.key
+*.pem
+
+# Allowed template config
+application-example.properties
+application-example.yml
+
+##############################
+# VS Code Settings
+##############################
+.vscode/
+.history/
+
+##############################
+# OS files
+##############################
+.DS_Store
+Thumbs.db
+
+##############################
+# Misc
+##############################
+*.zip
+*.tar
+*.gz
