@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import CMS.REST.payload.CommentDto;
 import CMS.REST.service.CommentService;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/cms/")
@@ -27,7 +28,7 @@ public class CommentController {
     }
 
     @PostMapping("/posts/{postId}/comments")
-    public ResponseEntity<CommentDto> createComment(@PathVariable ("postId") long postId, @RequestBody CommentDto commentDto){
+    public ResponseEntity<CommentDto> createComment(@PathVariable ("postId") long postId, @Valid @RequestBody CommentDto commentDto){
         return new ResponseEntity<>(commentService.createComment(postId, commentDto),HttpStatus.CREATED);
     }
 
@@ -44,7 +45,7 @@ public class CommentController {
 
 
     @PutMapping("/posts/{postId}/comments/{id}")
-    public ResponseEntity<CommentDto> updateComment(@PathVariable ("postId") Long postId, @PathVariable("id") Long id, @RequestBody CommentDto commentDto){
+    public ResponseEntity<CommentDto> updateComment(@PathVariable ("postId") Long postId, @PathVariable("id") Long id, @Valid @RequestBody CommentDto commentDto){
 
         CommentDto updaCommentDto = commentService.updateComment(postId, id, commentDto);
         return new ResponseEntity<>(updaCommentDto, HttpStatus.OK);

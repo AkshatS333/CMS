@@ -17,6 +17,7 @@ import CMS.REST.payload.PostDto;
 import CMS.REST.payload.PostResponse;
 import CMS.REST.service.PostService;
 import CMS.REST.utils.AppConstants;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/cms/posts")
@@ -30,7 +31,7 @@ public class PostController {
 
     // create cms post
     @PostMapping
-    public ResponseEntity<PostDto> createPost(@RequestBody PostDto postDto){
+    public ResponseEntity<PostDto> createPost(@Valid  @RequestBody PostDto postDto){
         return new ResponseEntity<>(postService.createPost(postDto),HttpStatus.CREATED);
     }
 
@@ -57,7 +58,7 @@ public class PostController {
 
     // update post by rest api
     @PutMapping("/{id}")
-    public ResponseEntity<PostDto> updatePost(@RequestBody PostDto postDto, @PathVariable( "id") long id ){
+    public ResponseEntity<PostDto> updatePost(@Valid  @RequestBody PostDto postDto, @PathVariable( "id") long id ){
 
         PostDto postResponse = postService.updatePost(postDto, id);
 
