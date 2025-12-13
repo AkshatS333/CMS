@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import CMS.REST.payload.JWTAuthReponse;
 import CMS.REST.payload.LoginDto;
 import CMS.REST.payload.RegisterDto;
 import CMS.REST.service.AuthService;
@@ -24,9 +25,13 @@ public class AuthController {
 
     // Build login REST api
     @PostMapping(value= {"/login", "/signin"})
-    public ResponseEntity<String> login(@RequestBody LoginDto loginDto){
-        String response = authService.login(loginDto);
-        return ResponseEntity.ok(response);
+    public ResponseEntity<JWTAuthReponse> login(@RequestBody LoginDto loginDto){
+        String token = authService.login(loginDto);
+
+        JWTAuthReponse jwtAuthReponse = new JWTAuthReponse();
+
+        jwtAuthReponse.setAccessToken(token);
+        return ResponseEntity.ok(jwtAuthReponse); 
     }
 
 
