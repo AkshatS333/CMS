@@ -1,6 +1,9 @@
 package CMS.REST.controller;
 
 
+import java.util.List;
+
+import org.apache.catalina.connector.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -13,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.service.annotation.PatchExchange;
 
+import CMS.REST.entity.Post;
 import CMS.REST.payload.PostDto;
 import CMS.REST.payload.PostResponse;
 import CMS.REST.service.PostService;
@@ -77,6 +82,15 @@ public class PostController {
         postService.deletePostById(id);
 
         return new ResponseEntity<>("Post deleted successfully", HttpStatus.OK);
+    }
+
+
+    // Build GET Post by Category REST api
+    
+    @GetMapping("/category/{id}")
+    public ResponseEntity<List<PostDto>> getPostsByCategory(@PathVariable("id") Long CategoryId){
+        List<PostDto> postDtos= postService.getPostsByCategory(CategoryId);
+        return ResponseEntity.ok(postDtos);
     }
 
     

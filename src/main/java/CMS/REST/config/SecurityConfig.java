@@ -52,7 +52,7 @@ public class SecurityConfig {
         http.csrf((csrf) -> csrf.disable())
                 .authorizeHttpRequests((authorize) ->
                 // authorize.anyRequest().authenticated()
-                authorize.requestMatchers(HttpMethod.GET, "/api/**").permitAll()
+                authorize.requestMatchers(HttpMethod.GET, "/cms/**").permitAll()
                         .requestMatchers("/cms/auth/**").permitAll()
                         .anyRequest().authenticated())
                 .exceptionHandling(exception -> exception.authenticationEntryPoint(authenticationEntryPoint))
