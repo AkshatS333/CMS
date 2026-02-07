@@ -1,10 +1,14 @@
 package CMS.REST;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import CMS.REST.entity.Role;
+import CMS.REST.repository.RoleRepository;
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Contact;
@@ -27,7 +31,7 @@ import io.swagger.v3.oas.annotations.info.Info;
 		url = "https://github.com/AkshatS333"
 	)
 )
-public class RestApplication {
+public class RestApplication implements CommandLineRunner {
 
 	@Bean
 	public ModelMapper modelMapper(){
@@ -36,6 +40,24 @@ public class RestApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(RestApplication.class, args);
+	}
+
+	@Autowired
+	private RoleRepository roleRepository;
+
+	@Override
+	public void run(String... args) throws Exception {
+		
+		Role adminRole = new Role();
+		adminRole.setName("ROLE_ADMIN");
+		roleRepository.save(adminRole);
+
+
+		Role userRole = new Role();
+		userRole.setName("ROLE_USER");
+		roleRepository.save(userRole);
+
+
 	}
 
 }
