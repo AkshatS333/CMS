@@ -33,7 +33,7 @@ public class Post {
 
     @Id
     @GeneratedValue(
-        strategy = GenerationType.IDENTITY
+        strategy = GenerationType.SEQUENCE
     )
     private Long id;
 

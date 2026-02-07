@@ -41,11 +41,9 @@ logs/
 ##############################
 # Application Secrets
 ##############################
-application.properties
+
 application.yml
-application-dev.properties
-application-prod.properties
-application-test.properties
+
 *.env
 *.key
 *.pem
