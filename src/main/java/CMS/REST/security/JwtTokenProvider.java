@@ -23,10 +23,10 @@ import io.jsonwebtoken.security.Keys;
 @Component
 public class JwtTokenProvider {
 
-    @Value("${app.jwt-secret}")
+    @Value("${JWT_SECRET}")
     private String jwtSecret;
 
-    @Value ("${app.jwt-expiration}")
+    @Value ("${JWT_EXPIRATION}")
     private long jwtExpirationDate;
 
 
